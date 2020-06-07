@@ -1,7 +1,7 @@
 <template>
   <div>
     <header class="header">
-      <h1 class="header-title"><a href="/">Vue InstantSearch v2 starter</a></h1>
+      <h1 class="header-title"><a href="/">AWS-ja-doc search</a></h1>
       <p class="header-subtitle">
         using
         <a href="https://github.com/algolia/vue-instantsearch">
@@ -13,19 +13,22 @@
     <div class="container">
       <ais-instant-search
         :search-client="searchClient"
-        index-name="demo_ecommerce"
+        index-name="aws_ja_docs"
       >
         <div class="search-panel">
           <div class="search-panel__filters">
-            <ais-refinement-list attribute="categories" searchable />
+            <ais-refinement-list attribute="service" searchable />
+            <ais-refinement-list attribute="title" searchable />
+
           </div>
 
           <div class="search-panel__results">
             <ais-search-box placeholder="Search here…" class="searchbox" />
             <ais-hits>
               <template slot="item" slot-scope="{ item }">
-                <h1><ais-highlight :hit="item" attribute="name" /></h1>
-                <p><ais-highlight :hit="item" attribute="description" /></p>
+                <p><ais-highlight :hit="item" attribute="text" /></p>
+                <a :href="item.url">{{ item.title }}</a>
+                
               </template>
             </ais-hits>
 
@@ -45,8 +48,8 @@ export default {
   data() {
     return {
       searchClient: algoliasearch(
-        'B1G2GM9NG0',
-        'aadef574be1f9252bb48d4ea09b5cfe5'
+        'RVAICUX7HD',
+        'aa8ce7c948ed360a50833f54ab92564b'
       ),
     };
   },
@@ -121,4 +124,9 @@ body {
   margin: 2rem auto;
   text-align: center;
 }
+
+.ais-Hits-item {
+  width: 100%;
+}
+
 </style>
