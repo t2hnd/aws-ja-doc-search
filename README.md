@@ -1,4 +1,4 @@
-# vue-instantsearch-v2-starter
+# aws-ja-doc-search
 
 ## Project setup
 ```

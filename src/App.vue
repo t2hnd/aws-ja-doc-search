@@ -49,7 +49,7 @@ export default {
     return {
       searchClient: algoliasearch(
         'RVAICUX7HD',
-        'aa8ce7c948ed360a50833f54ab92564b'
+        'd51653b9486bec74e5da8d1596b86eaa'
       ),
     };
   },
