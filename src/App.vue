@@ -18,7 +18,8 @@
         <div class="search-panel">
           <div class="search-panel__filters">
             <ais-refinement-list attribute="service" searchable />
-            <ais-refinement-list attribute="title" searchable />
+            <ais-refinement-list attribute="doc" searchable />
+            <ais-clear-refinements />
 
           </div>
 
@@ -26,9 +27,8 @@
             <ais-search-box placeholder="Search here…" class="searchbox" />
             <ais-hits>
               <template slot="item" slot-scope="{ item }">
+                <p class="ais-hits-service-name">{{ item.doc }} : <a :href="item.url" class="ais-hits-doc-link"> {{ item.title }}</a></p>
                 <p><ais-highlight :hit="item" attribute="text" /></p>
-                <a :href="item.url">{{ item.title }}</a>
-                
               </template>
             </ais-hits>
 
@@ -127,6 +127,24 @@ body {
 
 .ais-Hits-item {
   width: 100%;
+}
+
+.ais-hits-service-name {
+  font-size: 0.8rem;
+  padding: .1rem .4rem;
+  font-size: .8rem;
+  color: #3a4570;
+  background-color: #dfe2ee;
+  border-radius: 4px;
+  width: auto;
+}
+
+.ais-hits-doc-link {
+  font-size: 0.8rem;
+}
+
+.ais-RefinementList {
+  margin-bottom: 1rem;
 }
 
 </style>
